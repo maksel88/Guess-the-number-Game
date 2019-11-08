@@ -1,28 +1,44 @@
 print('Игра угадай число')
-count=1
-n=80
-m=int(input())
-# try:
-#     m=int(input())
-# except ValueError:
-#     print('Некоректная запись. Попробуй еще раз!')
-#     m=int(input())
-#     count += 1
-# except ValueError:
-#     print('Это что ещё такое? Eще раз!')
-#     m = int(input())
-#     count += 1
-while m!=n:
+cnt = 1  # счетчик (сколько было попыток)
+t = []  # записывает все числа, которые вводились
+n = 80  # загаданное число
+
+
+def get_int(prompt):
+    while True:
+        try:
+            value = int(input(prompt))
+        except ValueError:
+            print("Некоректная запись. Нужно написать ЧИСЛО!")
+            continue
+        if value < 0:
+            print("Некоректная запись. Нужно написать ПОЛОЖИТЕЛЬНОЕ число!")
+            continue
+        else:
+            break
+    return value
+
+
+m=get_int('') # вводимое число
+while m != n:
+    if m in t:
+        print('Вы уже вводили это число!')
+        cnt += 1
+        m = get_int('')
+        continue
     if 100 < m <= 0:
         print('Вы ввели число вне диапозона. Попробуйте еще раз.')
-        count += 1
-        m = int(input())
+        cnt += 1
+        t.append(m)
+        m = get_int('')
     elif m < n:
         print('Неверно! Загаданное число БОЛЬШЕ.')
-        count+=1
-        m=int(input())
+        cnt += 1
+        t.append(m)
+        m = get_int('')
     elif m > n:
         print('Неверно! Загаданное число МЕНЬШЕ.')
-        count+=1
-        m = int(input())
-print ('Поздравляем! Вы угадали c ' , count , ' попытки')
+        cnt += 1
+        t.append(m)
+        m = get_int('')
+print('Поздравляем! Вы угадали c ', cnt, ' попытки')
