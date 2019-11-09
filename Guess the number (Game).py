@@ -38,7 +38,8 @@ def get_int(prompt):
 
 def set_min(m):
     raznica = n - m
-    if raznica > 21:
+    if raznica > 20:
+        t.append(m)
         return print('Холодно! Загаданное число БОЛЬШЕ.')
     if 10 < raznica <= 20:
         t.append(m)
@@ -50,7 +51,8 @@ def set_min(m):
 
 def set_max(m):
     raznica = m - n
-    if raznica > 21:
+    if raznica > 20:
+        t.append(m)
         return print('Холодно! Загаданное число МЕНЬШЕ.')
     if 10 < raznica <= 20:
         t.append(m)
