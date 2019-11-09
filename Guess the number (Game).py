@@ -8,6 +8,8 @@ def get_int(prompt):
     while True:
         try:
             value = int(input(prompt))
+            global cnt
+            cnt += 1
         except ValueError:
             print("Некоректная запись. Нужно написать ЧИСЛО!")
             continue
@@ -23,22 +25,14 @@ m=get_int('') # вводимое число
 while m != n:
     if m in t:
         print('Вы уже вводили это число!')
-        cnt += 1
         m = get_int('')
         continue
-    if 100 < m <= 0:
-        print('Вы ввели число вне диапозона. Попробуйте еще раз.')
-        cnt += 1
-        t.append(m)
-        m = get_int('')
     elif m < n:
         print('Неверно! Загаданное число БОЛЬШЕ.')
-        cnt += 1
         t.append(m)
         m = get_int('')
     elif m > n:
         print('Неверно! Загаданное число МЕНЬШЕ.')
-        cnt += 1
         t.append(m)
         m = get_int('')
 print('Поздравляем! Вы угадали c ', cnt, ' попытки')
