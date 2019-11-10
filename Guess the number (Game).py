@@ -11,55 +11,51 @@ print(n)
 def get_int(prompt):
     while True:
         try:
-            value = int(input(prompt))
             global cnt, t
-            # cnt += 1
+            cnt += 1
+            value = int(input(prompt))
         except ValueError:
             print("Некоректная запись. Нужно написать ЦЕЛОЕ ЧИСЛО!")
-            # cnt += 1
             continue
-        finally:
-            cnt += 1
         if value in t:
-            print('Вы уже вводили это число!')
+            print('Вы уже вводили это число! ')
+            if value < 0 or value > 100:
+                print('Некоректная запись. Число в НЕДИАПОЗОНА!')
+            elif value > n:
+                print('Загаданное число МЕНЬШЕ')
+            elif value < n:
+                print('Загаданное число БОЛЬШЕ.')
             continue
-        elif value < 0:
-            print('Некоректная запись. Число в НЕДИАПОЗОНА!')
-            t.append(value)
-            continue
-        elif value > 100:
+        elif value < 0 or value > 100:
             print('Некоректная запись. Число в НЕДИАПОЗОНА!')
             t.append(value)
             continue
         else:
             break
+    t.append(value)
     return value
 
 
 def set_min(m):
     raznica = n - m
     if raznica > 20:
-        t.append(m)
         return print('Холодно! Загаданное число БОЛЬШЕ.')
     if 10 < raznica <= 20:
-        t.append(m)
         return print('Тепло! Загаданное число БОЛЬШЕ.')
-    elif 1 < raznica <= 10:
-        t.append(m)
+    elif 1 <= raznica <= 10:
         return print('Горячо! Загаданное число БОЛЬШЕ.')
+    t.append(m)
 
 
 def set_max(m):
     raznica = m - n
     if raznica > 20:
-        t.append(m)
         return print('Холодно! Загаданное число МЕНЬШЕ.')
     if 10 < raznica <= 20:
-        t.append(m)
         return print('Тепло! Загаданное число МЕНЬШЕ.')
-    elif 1 < raznica <= 10:
-        t.append(m)
+    elif 1 <= raznica <= 10:
         return print('Горячо! Загаданное число МЕНЬШЕ.')
+    t.append(m)
 
 
 m = get_int('')  # вводимое число
