@@ -1,14 +1,15 @@
-import random
+from random import randint
 
-print('Игра "Угадай число"')
+
+print('Я загадал число от 1 до 100, угадай!')
 cnt = 0  # счетчик (сколько было попыток)
 t = list()  # записывает все числа, которые вводились
 
-n = random.randint(0, 100)  # загаданное число
+n = randint(0, 100)  # загаданное значение
 print(n)
 
 
-def get_int(prompt):
+def get_int(prompt):  # исправляет некоректный ввод данных, повторный ввод, ввод внедиапозона
     while True:
         try:
             global cnt, t
@@ -17,8 +18,10 @@ def get_int(prompt):
         except ValueError:
             print("Некоректная запись. Нужно написать ЦЕЛОЕ ЧИСЛО!")
             continue
+        if value == n:
+            break
         if value in t:
-            print('Вы уже вводили это число! ')
+            print('Вы уже вводили это число!', end=' ')
             if value < 0 or value > 100:
                 print('Некоректная запись. Число в НЕДИАПОЗОНА!')
             elif value > n:
@@ -36,7 +39,10 @@ def get_int(prompt):
     return value
 
 
-def set_min(m):
+m = get_int('')  # вводимое значение
+
+
+def set_min(m):  # вводимое значения меньше
     raznica = n - m
     if raznica > 20:
         return print('Холодно! Загаданное число БОЛЬШЕ.')
@@ -47,7 +53,7 @@ def set_min(m):
     t.append(m)
 
 
-def set_max(m):
+def set_max(m):  # вводимое значения больше
     raznica = m - n
     if raznica > 20:
         return print('Холодно! Загаданное число МЕНЬШЕ.')
@@ -58,12 +64,22 @@ def set_max(m):
     t.append(m)
 
 
-m = get_int('')  # вводимое число
-while m != n:
-    if m < n:
+while True:
+    # m = get_int('')  # вводимое значение
+    if m == n:
+        print('Поздравляем! Вы угадали c {} попытки'.format(cnt))
+        if input('Хочешь играть еще раз? "y|n"') == 'y':
+            n = randint(0, 100)  # загаданное значение
+            print(n)
+            cnt = 0
+            t.clear()
+        # continue
+        else:
+            print('Спасибо за игру!')
+            break
+    elif m < n:
         set_min(m)
         m = get_int('')
-    elif m > n:
+    else:
         set_max(m)
         m = get_int('')
-print('Поздравляем! Вы угадали c {} попытки'.format(cnt))
