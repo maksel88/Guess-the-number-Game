@@ -1,4 +1,4 @@
-def get_int(n, t, prompt, cnt=0):  # исправляет некоректный ввод данных, повторный ввод, ввод внедиапозона
+def get_int(random_num, box_num, prompt, cnt=0):  # исправляет некоректный ввод данных, повторный ввод, ввод внедиапозона
     while True:
         try:
             cnt += 1
@@ -6,23 +6,23 @@ def get_int(n, t, prompt, cnt=0):  # исправляет некоректный
         except Exception:
             print("Некоректная запись. Нужно написать ЦЕЛОЕ ЧИСЛО!")
             continue
-        if value == n:
+        if value == random_num:
             break
-        if value in t:
+        if value in box_num:
             print('Вы уже вводили это число!', end=' ')
             if value < 0 or value > 100:
                 print('Некоректная запись. Число в НЕДИАПОЗОНА!')
-            elif value > n:
+            elif value > random_num:
                 print('Загаданное число МЕНЬШЕ')
-            elif value < n:
+            elif value < random_num:
                 print('Загаданное число БОЛЬШЕ.')
             continue
         elif value < 0 or value > 100:
             print('Некоректная запись. Число в НЕДИАПОЗОНА!')
-            t.append(value)
+            box_num.append(value)
             continue
         else:
             break
-    t.append(value)
+    box_num.append(value)
     return value
     return cnt

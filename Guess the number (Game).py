@@ -6,28 +6,28 @@ from set_max import set_max
 print('Я загадал число от 1 до 100, угадай!')
 # записывает все числа, которые вводились
 
-n = randint(0, 100)  # загаданное значение
-print(n)
-t = list()
+random_num = randint(0, 100)  # загаданное значение
+print(random_num)
+box_num = list()
 
 
-m = get_int(n, t, '')  # вводимое значение
+user_num = get_int(random_num, box_num, '')  # вводимое значение
 
 
 while True:
-    if m < n:
-        set_min(n, m)
-        m = get_int(n, t, '')
-    elif m > n:
-        set_max(m, n)
-        m = get_int(n, t, '')
-    elif m == n:
+    if user_num < random_num:
+        set_min(random_num, user_num)
+        user_num = get_int(random_num, box_num, '')
+    elif user_num > random_num:
+        set_max(user_num, random_num)
+        user_num = get_int(random_num, box_num, '')
+    elif user_num == random_num:
         print('Поздравляем! Вы угадали c {} попытки'.format(cnt))
         if input('Хочешь играть еще раз? "y|n"') == 'y':
-            n = randint(0, 100)  # загаданное значение
-            print(n)
+            random_num = randint(0, 100)  # загаданное значение
+            print(random_num)
             cnt = 0
-            t.clear()
+            box_num.clear()
         else:
             print('Спасибо за игру!')
             break
