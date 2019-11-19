@@ -24,5 +24,4 @@ def get_int(random_num, box_num, prompt, cnt=0):  # исправляет нек�
         else:
             break
     box_num.append(value)
-    return value
-    return cnt
+    return value, cnt

@@ -11,7 +11,7 @@ print(random_num)
 box_num = list()
 
 
-user_num = get_int(random_num, box_num, '')  # вводимое значение
+user_num, cnt = get_int(random_num, box_num, '')  # вводимое значение
 
 
 while True:
