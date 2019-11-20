@@ -8,7 +8,7 @@ user = Greeting(input('Как Вас зовут? '))
 user.print_greeting()
 
 random_num = randint(0, 100)  # случайно загаданное значение
-# print(random_num)
+print(random_num)
 
 cnt = 0  # счетчик попыток
 box_num = []  # бокс для запоминания вводимых значений
@@ -18,7 +18,8 @@ while True:
     box_num.append(user_num)
     if user_num == random_num:
         print(f"Поздравляю! Вы угадали c {cnt} попытки")
-        if input('Если хотите съиграть еще раз, нажмите "+"') == '+':
+        user.print_play_one_more()
+        if input('') == '+':
             cnt = 0
             random_num = randint(0, 100)
             print(random_num)
