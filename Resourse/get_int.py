@@ -1,4 +1,4 @@
-def input_check(prompt, box_num, cnt):
+def input_check(prompt, box_num, cnt):  # проверка вводимого значения
     while True:
         try:
             value = int(input(prompt))

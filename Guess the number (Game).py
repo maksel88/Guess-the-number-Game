@@ -2,20 +2,23 @@ from random import randint
 from get_int import input_check
 from set_max import set_max
 from set_min import set_min
+from classes import Greeting
 
-print('Я загадал число от 1 до 100, угадай!')
-random_num = randint(0, 100)  # загаданное значение
-print(random_num)
+user = Greeting(input('Как Вас зовут? '))
+user.print_greeting()
 
-cnt = 0
-box_num = []
+random_num = randint(0, 100)  # случайно загаданное значение
+# print(random_num)
+
+cnt = 0  # счетчик попыток
+box_num = []  # бокс для запоминания вводимых значений
 while True:
     cnt += 1
-    user_num, cnt = input_check('', box_num, cnt)
+    user_num, cnt = input_check('', box_num, cnt)  # вводимое пользователем значение
     box_num.append(user_num)
     if user_num == random_num:
-        print(f"Поздравляем! Вы угадали c {cnt} попытки")
-        if input('Если хочешь съиграть еще раз, нажму "+"') == '+':
+        print(f"Поздравляю! Вы угадали c {cnt} попытки")
+        if input('Если хотите съиграть еще раз, нажмите "+"') == '+':
             cnt = 0
             random_num = randint(0, 100)
             print(random_num)
