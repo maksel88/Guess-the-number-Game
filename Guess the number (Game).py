@@ -24,7 +24,7 @@ while True:
             random_num = randint(0, 100)
             print(random_num)
         else:
-            print('Спасибо за игру!')
+            print('Спасибо з а игру!')
             break
     elif user_num > random_num:
         set_max(random_num, user_num)
