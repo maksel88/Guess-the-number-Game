@@ -8,7 +8,7 @@ user = Greeting(input('Как Вас зовут? '))
 user.print_greeting()
 
 random_num = randint(0, 100)  # случайно загаданное значение
-print(random_num)
+#print(random_num)
 
 cnt = 0  # счетчик попыток
 box_num = []  # бокс для запоминания вводимых значений
@@ -20,11 +20,13 @@ while True:
         print(f"Поздравляю! Вы угадали c {cnt} попытки")
         user.print_play_one_more()
         if input('') == '+':
+            user.print_play_again()
             cnt = 0
             random_num = randint(0, 100)
-            print(random_num)
+            box_num.clear()
+            #print(random_num)
         else:
-            print('Спасибо з а игру!')
+            user.good_buy()
             break
     elif user_num > random_num:
         set_max(random_num, user_num)

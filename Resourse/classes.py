@@ -8,3 +8,9 @@ class Greeting:
 
     def print_play_one_more(self):
         print(f'Слушай {self.name}, если хочешь съиграть еще раз нажми "+"')
+
+    def print_play_again(self):
+        print('Я  снова загадал число от 1 до 100, угадай!')
+
+    def good_buy(self):
+        print(f'Спасибо за игру {self.name}!')
